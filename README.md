@@ -1,41 +1,40 @@
 # Media Picker
 
-------
-Media Picker is an Android Libary that lets you to select multiple images, video for Android 4.4 (API 19) +.
+Media Picker is an Android Library that lets you to select multiple images, video for Android 4.4 (API 19) +.
 
 # NOTE
-----
+
 ## Installation
-------
 
 **Gradle**
 
 ```gradle
 dependencies {
-	implementation 'net.alhazmy13.MediaPicker:libary:2.4.4'
+	implementation 'com.github.thirdegg:media-picker:1.0.0-alpha'
 }
 ```
 
 # Usage
-------
+
 ## Images
+
 After adding the library, you need to:
 
 ### Create an `MediaPicker`
 You will need to create a new instance of `MediaPicker`. Once the instance are configured, you can call `build()`.
 
 ```kotlin
-        new MediaPicker.Builder(MainActivity.this)
-                    .mode(MediaPicker.Mode.CAMERA_AND_GALLERY)
-                    .directory(MediaPicker.Directory.DEFAULT)
-                    .imageExtension(MediaPicker.Extension.PNG)
-                    .videoExtension(MediaPicker.Extension.MP4)
-                    .allowMultipleImages(false)
-                    .enableDebuggingMode(true)
-                    .setCallback { files->
-                        //TODO
-                    }
-                    .build();
+MediaPicker.Builder(MainActivity.this)
+    .mode(MediaPicker.Mode.CAMERA_AND_GALLERY)
+    .directory(MediaPicker.Directory.DEFAULT)
+    .imageExtension(MediaPicker.Extension.PNG)
+    .videoExtension(MediaPicker.Extension.MP4)
+    .allowMultipleImages(false)
+    .enableDebuggingMode(true)
+    .setCallback { files->
+        //TODO
+    }
+    .build();
 ```
 
 ### Additional Image Options
@@ -59,7 +58,6 @@ You will need to create a new instance of `MediaPicker`. Once the instance are c
 //OR
 
 .directory(Environment.getExternalStorageDirectory()+"/myFolder")
-
 ```
 
 * `allowMultipleImages` Extra used to select and return multiple images from gallery **CANNOT select single image from gallery if this feature was enabled**
@@ -86,6 +84,6 @@ You will need to create a new instance of `MediaPicker`. Once the instance are c
 ```kotlin
 .imageExtension(MediaPicker.Extension.MP4)
 ```
-
+---
 
 library based on [https://github.com/alhazmy13/MediaPicker](https://github.com/alhazmy13/MediaPicker)
