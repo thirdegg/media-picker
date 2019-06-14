@@ -25,7 +25,6 @@ object FileProcessing {
      * @param context The context.
      * @param uri     The Uri to query.
      */
-    @TargetApi(Build.VERSION_CODES.KITKAT)
     fun getPath(context: Context, uri: Uri): String? {
 
         val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT

@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.Environment
 import androidx.appcompat.app.AppCompatActivity
+import com.thirdegg.mediapicker.media.MediaFragment.Companion.SERVICE_ACTION
 
 class MediaPicker(builder: Builder) {
 
@@ -27,7 +27,7 @@ class MediaPicker(builder: Builder) {
             fragment.arguments = Bundle().apply {
                 putSerializable("config", config)
             }
-            context.registerReceiver(dataReceiver, IntentFilter(MediaTags.Action.SERVICE_ACTION))
+            context.registerReceiver(dataReceiver, IntentFilter(SERVICE_ACTION))
             context.supportFragmentManager.beginTransaction().add(fragment,"chooser").commit()
         }
     }
