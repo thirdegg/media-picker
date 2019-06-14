@@ -10,7 +10,7 @@ Media Picker is an Android Library that lets you to select multiple images, vide
 
 ```gradle
 dependencies {
-    implementation 'com.github.thirdegg:media-picker:1.0.0-alpha'
+    implementation 'com.github.thirdegg:media-picker:1.0.1-alpha'
 }
 ```
 
