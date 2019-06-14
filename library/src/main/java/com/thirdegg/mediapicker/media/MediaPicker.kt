@@ -33,37 +33,9 @@ class MediaPicker(builder: Builder) {
     }
 
 
-
-
     class Builder(private var context: AppCompatActivity?) {
 
         private val mediaConfig: MediaConfig = MediaConfig()
-
-        fun mode(mode: Mode): Builder {
-            this.mediaConfig.mode = mode
-            return this
-        }
-
-        fun directory(directory: String): Builder {
-            this.mediaConfig.directory = directory
-            return this
-        }
-
-        fun directory(directory: Directory): Builder {
-            if (directory == Directory.DEFAULT)
-                this.mediaConfig.directory = Environment.getExternalStorageDirectory().toString() + MediaTags.Tags.IMAGE_PICKER_DIR
-            return this
-        }
-
-        fun imageExtension(imageExtension: ImageExtension): Builder {
-            this.mediaConfig.imageExtension = imageExtension
-            return this
-        }
-
-        fun videoExtension(videoExtension: VideoExtension): Builder {
-            this.mediaConfig.videoExtension = videoExtension
-            return this
-        }
 
         fun allowMultipleImages(allowMultiple: Boolean): Builder {
             this.mediaConfig.allowMultiple = allowMultiple
@@ -93,25 +65,6 @@ class MediaPicker(builder: Builder) {
             return mediaConfig
         }
 
-    }
-
-    enum class ImageExtension(val value: String) {
-        PNG(".png"),
-        JPG(".jpg")
-    }
-
-    enum class VideoExtension(val value: String) {
-        MP4(".mp4")
-    }
-
-    enum class Mode(val value: Int) {
-        CAMERA(0),
-        GALLERY(1),
-        CAMERA_AND_GALLERY(2)
-    }
-
-    enum class Directory(val value: Int) {
-        DEFAULT(0)
     }
 
 }

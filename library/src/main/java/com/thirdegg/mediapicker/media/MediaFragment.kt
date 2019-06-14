@@ -22,7 +22,7 @@ class MediaFragment: Fragment() {
     lateinit var config: MediaConfig
     lateinit var destination:File
 
-            override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         config = (arguments?.getSerializable("config") as MediaConfig?)?: throw IllegalAccessException()
@@ -40,13 +40,13 @@ class MediaFragment: Fragment() {
                 )
                 val rootLayout = bottomSheetDialog.findViewById<LinearLayout>(R.id.root_bottom_dialog)
                 rootLayout.findViewById<View>(R.id.take_image_button).setOnClickListener {
-                    destination = File(config.directory, getRandomString() + config.imageExtension.value)
+                    destination = File(config.directory, getRandomString() + ".jpg")
                     startActivityForTakeImage(context)
                     dialog.dismiss()
                 }
 
                 rootLayout.findViewById<View>(R.id.take_video_button).setOnClickListener {
-                    destination = File(config.directory, getRandomString() + config.videoExtension.value)
+                    destination = File(config.directory, getRandomString() + ".mp4")
                     startActivityForTakeVideo(context)
                     dialog.dismiss()
                 }
@@ -98,18 +98,18 @@ class MediaFragment: Fragment() {
         val intentPhoto = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         val fileUri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", destination)
         intentPhoto.putExtra(MediaStore.EXTRA_OUTPUT, fileUri)
-        val chooserIntent = Intent.createChooser(intentPhoto, "Select Picture")
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentPhoto)
-        startActivityForResult(chooserIntent, CAMERA_REQUEST_CODE)
+//        val chooserIntent = Intent.createChooser(intentPhoto, "Select Picture")
+//        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentPhoto)
+        startActivityForResult(intentPhoto, CAMERA_REQUEST_CODE)
     }
 
     private fun startActivityForTakeVideo(context: Activity) {
         val intentVideo = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
         val fileUri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", destination)
         intentVideo.putExtra(MediaStore.EXTRA_OUTPUT, fileUri)
-        val chooserIntent = Intent.createChooser(intentVideo, "Select Picture")
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentVideo)
-        startActivityForResult(chooserIntent, CAMERA_REQUEST_CODE)
+//        val chooserIntent = Intent.createChooser(intentVideo, "Select Picture")
+//        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentVideo)
+        startActivityForResult(intentVideo, CAMERA_REQUEST_CODE)
     }
 
 
@@ -162,7 +162,7 @@ class MediaFragment: Fragment() {
             }
         }
 
-        intent.action = MediaTags.Action.SERVICE_ACTION
+        intent.action = SERVICE_ACTION
         intent.putExtras(Bundle().apply {
             putStringArrayList("files",files)
         })
@@ -177,6 +177,7 @@ class MediaFragment: Fragment() {
     companion object {
         const val MEDIA_PICKER_REQUEST_CODE = 42141
         const val CAMERA_REQUEST_CODE = 1888
+        const val SERVICE_ACTION = "com.thirdegg.mediapicker.mediapicker.media.service"
     }
 
 }
