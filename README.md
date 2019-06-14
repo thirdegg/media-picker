@@ -25,10 +25,6 @@ You will need to create a new instance of `MediaPicker`. Once the instance are c
 
 ```kotlin
 MediaPicker.Builder(MainActivity.this)
-    .mode(MediaPicker.Mode.CAMERA_AND_GALLERY)
-    .directory(MediaPicker.Directory.DEFAULT)
-    .imageExtension(MediaPicker.Extension.PNG)
-    .videoExtension(MediaPicker.Extension.MP4)
     .allowMultipleImages(false)
     .enableDebuggingMode(true)
     .setCallback { files->
