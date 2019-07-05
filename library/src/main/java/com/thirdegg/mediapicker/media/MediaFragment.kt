@@ -155,11 +155,7 @@ class MediaFragment: Fragment() {
             }
         }
         if (requestCode == CAMERA_REQUEST_CODE) {
-            context?.let { context->
-                data?.let {data->
-                    files.add(destination.absolutePath)
-                }
-            }
+            files.add(destination.absolutePath)
         }
 
         intent.action = SERVICE_ACTION
